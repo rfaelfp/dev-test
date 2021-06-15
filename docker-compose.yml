@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3"
 
 services: 
     app:
@@ -6,5 +6,6 @@ services:
         command: npm start
         ports:
             - "3000:3000"
+        restart: always
         volumes: 
             - .:/usr/app
