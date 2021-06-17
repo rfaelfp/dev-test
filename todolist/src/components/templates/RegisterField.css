@@ -1,0 +1,14 @@
+.container-form {
+    padding-top: 50px;
+    
+}
+.button {
+    width: 15ch;
+    border: 15px;
+    left: 20px;
+    border: none;
+}
+
+.text-field {
+    width: 400px;
+}
