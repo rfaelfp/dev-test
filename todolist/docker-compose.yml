@@ -9,6 +9,7 @@ services:
         restart: always
         volumes: 
             - .:/usr/app
+        
 
     db:
         container_name: 'database-node'
@@ -20,3 +21,14 @@ services:
         environment: 
         - MYSQL_ROOT_PASSWORD=root
         - TZ=America/Sao_Paulo
+    
+    json:
+        build: .
+        container_name: 'json-server'
+        image: vimagick/json-server
+        command: -H 0.0.0.0 -p 3001 -w db.json
+        ports:
+          - "3001:3001"
+        volumes:
+          - .:/usr/app
+        restart: always
