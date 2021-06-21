@@ -3,14 +3,12 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Checkbox from '@material-ui/core/Checkbox';
 
-const baseUrl = 'http://localhost:3001/list'
+const baseUrl = 'http://localhost:3001/tasks'
 const initialState = {
-    list: [ 
-        {
-        tarefa: "teste"
-    }
-    ]
+    task: { name: '', finished: false },
+    list: []
 }
+
 export default class ListCrud extends Component {
 
     state = { ...initialState }
@@ -21,29 +19,33 @@ export default class ListCrud extends Component {
         })
     }
 
+    clear() {
+        this.setState({ task: initialState.task })
+    }
+
     save() {
-        const list = this.state.list
-        const method = list.id ? 'put' : 'post'
-        const url = list.id ? `${baseUrl}/${list.id}` : baseUrl
-        axios[method](url, list)
+        const task = this.state.task
+        const method = task.id ? 'put' : 'post'
+        const url = task.id ? `${baseUrl}/${task.id}` : baseUrl
+        axios[method](url, task)
             .then(resp => {
                 const list = this.getUpdatedList(resp.data)
-                this.setState({ list: initialState.list, list })
+                this.setState({ task: initialState.task, list })
             })
     }
 
-    getUpdatedList(list, add = true) {
-        const lists = this.state.list.filter(u => u.id !== list.id)
-        if(add) list.unshift(list)
-        return lists
+    getUpdatedList(task, add = true) {
+        const list = this.state.list.filter(u => u.id !== task.id)
+        if (add) list.unshift(task)
+        return list
     }
 
-    updateField (event) {
-        const task = { ...this.state.list }
-        task[event.target.tarefa] = event.target.value
+
+    updateField(event) {
+        const task = { ...this.state.task }
+        task[event.target.name] = event.target.value
         this.setState({ task })
     }
-
 
     renderInput() {
         return (
@@ -52,9 +54,8 @@ export default class ListCrud extends Component {
                     <div className="col-md-9">
                         <div className="form-group">
                             <label>Descrição</label>
-                            <input type="text" className="form-control"
-                            value={this.state.list.tarefa} name="tarefa"
-                            onChange={e => this.updateField(e)}/>
+                            <input type="text" className="form-control" name="name" value={this.state.task.name}
+                                onChange={e => this.updateField(e)} />
                         </div>
                     </div>
                     <div className="col-md-2 d-flex align-items-center justify-content-left pt-4">
@@ -68,6 +69,19 @@ export default class ListCrud extends Component {
             </div>
         )
     }
+
+    load(task) {
+        this.setState({ task })
+    }
+
+    remove(task) {
+        axios.delete(`${baseUrl}/${task.id}`).then(resp => {
+            const list = this.getUpdatedList(task, false)
+            this.setState({ list })
+        })
+    }
+
+
 
     renderTable() {
         return (
@@ -97,20 +111,28 @@ export default class ListCrud extends Component {
                             color="default"
                             inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                         /></td>
-                    <td className="align-middle">{list.tarefa}</td>
+                        {!list.finished
+                            ? <td className="align-middle">{list.name}</td>
+                            : <td className="align-middle"><s>{list.name}</s></td>
+                        }
                     <td>
-                        <button className="btn btn-outline-dark mr-1">
+                        <button className="btn btn-outline-dark mr-1" onClick={() => this.load(list)}>
                             <i className="fa fa-pencil pr-1"></i>
                             Editar
                         </button>
-                        <button className="btn btn-outline-dark mr-1" >
+                        <button className="btn btn-outline-dark mr-1" onClick={() => this.remove(list)}>
                             <i className="fa fa-trash pr-1"></i>
                             Excluir
                         </button>
-                        <button className="btn btn-outline-dark mr-1" >
-                            <i className="fa fa-check pr-1"></i>
-                            Finalizar
-                        </button>
+                        {!list.finished
+                            ? <button className="btn btn-outline-dark mr-1" name="finish" value="true"  onChange={e => this.updateField(e)} >
+                                <i className="fa fa-check pr-1"></i>
+                                Finalizar
+                            </button>
+                            : <button className="btn btn-secondary">
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            </button>
+                        }
                     </td>
                 </tr>
             )
@@ -121,16 +143,16 @@ export default class ListCrud extends Component {
     renderBottonButton() {
         return (
 
-                <div className="col-md-12 d-flex justify-content-left pt-4">
-                    <button className="btn btn-outline-dark" >
-                        <i className="fa fa-check pr-1"></i>
-                        Selecionar Todos
-                    </button>
-                    <button className="btn btn-outline-dark ml-2" >
-                        <i className="fa fa-check pr-1"></i>
-                        Finalizar Selecionados
-                    </button>
-                </div>
+            <div className="col-md-12 d-flex justify-content-left pt-4">
+                <button className="btn btn-outline-dark">
+                    <i className="fa fa-list pr-1"></i>
+                    Selecionar Todos
+                </button>
+                <button className="btn btn-outline-dark ml-2" >
+                    <i className="fa fa-check pr-1"></i>
+                    Finalizar Selecionados
+                </button>
+            </div>
         )
     }
 

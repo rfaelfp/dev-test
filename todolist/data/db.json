@@ -1,12 +1,14 @@
 {
-  "list": [
+  "tasks": [
     {
-      "id": 1,
-      "tarefa": "cabelereiro"
+      "name": "a",
+      "finished": false,
+      "id": 1
     },
     {
-      "id": 2,
-      "tarefa": "supermercado"
+      "name": "adsf",
+      "finished": true,
+      "id": 2
     }
   ]
 }
