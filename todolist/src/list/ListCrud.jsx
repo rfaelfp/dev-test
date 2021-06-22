@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './ListCrud.css'
 
 import axios from 'axios'
 import Checkbox from '@material-ui/core/Checkbox';
@@ -10,6 +11,7 @@ const initialState = {
 }
 
 export default class ListCrud extends Component {
+
 
     state = { ...initialState }
 
@@ -74,24 +76,33 @@ export default class ListCrud extends Component {
         this.setState({ task })
     }
 
-    remove(task) {
+    remove(task) {        
         axios.delete(`${baseUrl}/${task.id}`).then(resp => {
             const list = this.getUpdatedList(task, false)
             this.setState({ list })
         })
     }
 
+    finishTask(task) {
+        const data = {name: task.name, finished: true}
+        axios.put(`${baseUrl}/${task.id}`, data ).then(resp => {
+        const list = this.getUpdatedList(resp.data)
+        this.setState({ task: initialState.task, list })
+        })
+    }
+
+
 
 
     renderTable() {
         return (
             <div >
-                <table className="table mt-3">
+                <table className="table mt-12">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Tarefas</th>
-                            <th>Ações</th>
+                            <th  className="col-sm-1"></th>
+                            <th  className="col-sm-7">Tarefas</th>
+                            <th  className="col-sm-4">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,16 +117,17 @@ export default class ListCrud extends Component {
         return this.state.list.map(list => {
             return (
                 <tr>
-                    <td>
+                    <td className="col-sm-1">
                         <Checkbox
+                            
                             color="default"
                             inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                         /></td>
                         {!list.finished
-                            ? <td className="align-middle">{list.name}</td>
-                            : <td className="align-middle"><s>{list.name}</s></td>
+                            ? <td className="align-middle col-sm-7" >{list.name}</td>
+                            : <td className="align-middle col-sm-7" ><s>{list.name}</s></td>
                         }
-                    <td>
+                    <td  className="col-sm-4">
                         <button className="btn btn-outline-dark mr-1" onClick={() => this.load(list)}>
                             <i className="fa fa-pencil pr-1"></i>
                             Editar
@@ -125,11 +137,11 @@ export default class ListCrud extends Component {
                             Excluir
                         </button>
                         {!list.finished
-                            ? <button className="btn btn-outline-dark mr-1" name="finish" value="true"  onChange={e => this.updateField(e)} >
+                            ? <button className="btn btn-outline-dark mr-1" onClick={() => this.finishTask(list)} >
                                 <i className="fa fa-check pr-1"></i>
                                 Finalizar
                             </button>
-                            : <button className="btn btn-secondary">
+                            : <button className="btn btn-secondary" id="finalizado">
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </button>
                         }
@@ -164,7 +176,6 @@ export default class ListCrud extends Component {
                 {this.renderInput()}
                 {this.renderTable()}
                 {this.renderBottonButton()}
-
             </div>
         )
     }

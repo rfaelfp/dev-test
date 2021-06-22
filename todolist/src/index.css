@@ -7,6 +7,10 @@
   font-family: 'RobotoMono', monospace;
 }
 
+#root {
+  width: 75%;
+}
+
 body {
   display: flex;
   height: 100vh;
