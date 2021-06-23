@@ -1,3 +1,9 @@
-#finalizado {
+#finishButton {
     width: 132.42px;
+}
+
+#finish {
+    background-color: #6c757d;
+    font-weight: bold;
+    border-radius: 10px;
 }
