@@ -1,70 +1,84 @@
-# Teste de Desenvolvimento - Frontend e Backend
+<h1 align="center">Dev-Test CI&T</h1>
+<h1 align="center">
+<img src="https://logos-download.com/wp-content/uploads/2018/01/CIT_logo_RGB-700x280.png" alt="banner" height="180" width="450">
+</h1>
 
-Olá! Bom dia, boa tarde ou boa noite!
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a> •
+ <a href="#-tecnologias">Tecnologias</a> •
+ <a href="#-layout">Layout</a> •  
+ <a href="#-como-contribuir-para-o-projeto">Contribuir</a> •
+ <a href="#-licença">Licença</a> •    
+</p>
 
-Este é um desafio criado para a nossa seleção de uma pessoa Engenheira de Software que irá atuar na role de DEV.
 
-Leia atentamente todo o conteúdo desse documento antes de começar qualquer execução!
+## 💻 Sobre o projeto
+O presente projeto é uma proposta oferecida pela [CI&T](https://ciandt.com/br/pt-br/home) afim de desafiar os alunos da UNA em uma situação real de desenvolvimento front-end e back-end.<br>
+O desafio consiste no desenvolvimento aplicação de lista de tarefas (todo list) aplicando conceitos REST e utilizando o formato JSON.
+A escolha de linguagem, framework, dependencias e conceitos gerais do desenvolvimento da aplicação foi de livre escolha.<br>
+Projeto desenvolvido durante a execução da unidade currícular de Gestão e Qualidade de Software oferecida pela faculdade [UNA](https://www.una.br/).<br>
+Os requisitos completos do desafio pode ser verificado [aqui](https://github.com/dhiegobastos/dev-test).
 
-## Instruções gerais
+### 🛠 Tecnologias
 
-O desafio consiste em implementar um app de TODO List simples que possua um frontend e um backend para processar e armazenar as operações e dados.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-Não definiremos linguagens ou frameworks a serem utilizados, no entanto, o uso de frameworks como Angular, Vue.js e React além de linguagens como Java e C# podem ser um diferencial para avaliar o conhecimento nessas stacks. Fica a seu critério escolher o que se adequa mais ao seu perfil e/ou ao seu conhecimento.
+- [Node.js](https://nodejs.org/en/)
+- [ReactJs](https://reactjs.org/)
+- [Material.UI](https://material-ui.com/)
+- [Docker](https://www.docker.com/)
+- [Docker-Compose](https://docs.docker.com/compose/install/)
+- [Axios](https://axios-http.com/)
+- [Json-Server](https://www.npmjs.com/package/json-server)
+- [Bootstrap](https://getbootstrap.com/)
+- [FontAwesome](https://fontawesome.com/)
 
-A entrega desse teste deve ser feita através do seu repositório Git pessoal (GitHub, Bitbucket, etc).
+## 📋 Instalação
 
-Qualquer dúvida que tenha, basta entrar em contato conosco que teremos o maior prazer em te ajudar!
+Necessário realizar a instalação do [Docker](https://www.docker.com/) e [Docker-Compose](https://docs.docker.com/compose/install/).
 
-### Critérios para avaliação
-- Organização de código, arquitetura e boas práticas de programação (SOLID, Clean Code, etc)
-- Como foi a utilização dos frameworks e bibliotecas utilizados e da linguagem de programação
-- Comunicação entre as aplicações (frontend e backend) deverá ocorrer através do protocolo HTTP com chamadas Rest utilizando o formato JSON
-- Documentação de como executar os projetos no ambiente local
-- Implementação de testes de unidade (diferencial)
-- Aplicações executando em containers Docker / docker-compose (diferencial)
+1. Clonar o repositório:
 
-# Construindo um app de todo-list
+~~~
+git clone https://github.com/rfaelfp/dev-test.git
+~~~
+2. Acessar o diretório do projeto pelo terminal:
 
-## Meu Todo List App
+~~~
+./todolist
+~~~
+3. Executar o comando:
+~~~
+docker-compose up
+~~~
 
-### Frontend
+## 🎨 Layout
 
-- Faça o setup de um novo projeto
-- Criar uma página com formulário para inclusão da lista de TODOs. A página deverá conter:
-  - Campo de input para inserir a descrição
-  - Botão para cadastrar
-- Na mesma página, crie uma tabela para visualizar os itens já cadastrados. A tabela deverá possuir as seguintes ações para cada item:
-  - Botão para editar o texto
-  - Botão para excluir o item
-  - Botão para finalizar o item
-- Os itens finalizados deverão ser apresentados em uma cor diferente dos demais itens na lista
-- Criar uma opção para selecionar todos os itens da lista e um botão para finalizar todos com uma única ação
+### Login/Credenciamento
 
-Abaixo pode ser visto um wireframe de como essa tela pode ser construída:
 
-![Wireframe TODO List App](./images/wireframe-todolist-app.png)
+### Trilhas
+<p align="center">
+  <img alt="mentoria" title="#Layout" src="./projeto_estimulo/assets/images/mentoria.png" width="250px" >
+&nbsp;&nbsp;
+  <img alt="capacitacao" title="#Layout" src="./projeto_estimulo/assets/images/capacitacao.png" width="250px" >
+&nbsp;&nbsp;
+  <img alt="acompanhamento" title="#Layout" src="./projeto_estimulo/assets/images/acompanhamento.png" width="250px">
+</p>
 
-### Backend
+## 💪 Como contribuir para o projeto
 
-- Faça o setup de um novo projeto
-- Criar APIs Rest para as seguintes operações:
-  - Listar os itens salvos
-  - Salvar / Atualizar um item
-    - Poderá ser utilizado também para mudar o status do item para finalizado
-  - Excluir um item
-  
+1. Faça um **fork** do projeto.
+2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
+4. Envie as suas alterações: `git push origin my-feature`
+> Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](./CONTRIBUTING.md)
 
-**Obs.:** A persistência das informações pode ser em memória ou em um banco de dados, fica a seu critério definir o que é mais confortável para implementar.
+<h2 id=autor>:grin: Autor</h2>
 
-## Bônus Frontend
+Desenvolvido por 
+<a href="https://www.linkedin.com/in/rafael-ferreira-pedrosa-021b16ba/" target="_blank">Rafael Ferreira Pedrosa</a>.
 
-Como bônus, caso queira exercitar ainda mais os recursos do framework escolhido, implemente também a busca por itens já finalizados e a ordenação na tabela para a coluna "Tarefa".
+## 📝 Licença
 
-## Considerações finais
-
-Aqui, finalizamos o teste! Espero que tenha conseguido fazer tudo com bastante carinho e atenção! Aguardamos pelo seu envio e, assim que fizermos a avaliação, iremos te dar um retorno com feedbacks a respeito.
-
-Esperamos também que tenha gostado e que tenha aprendido um pouco conosco!
-
-Até breve!
+Este projeto esta sobe a licença [MIT](./LICENSE).
