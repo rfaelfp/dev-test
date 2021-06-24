@@ -47,7 +47,11 @@ git clone https://github.com/rfaelfp/dev-test.git
 ~~~
 ./todolist
 ~~~
-3. Executar o comando:
+3.Instalar as dependencias executando:
+~~~
+npm i
+~~~
+4. Executar o comando:
 ~~~
 docker-compose up
 ~~~
