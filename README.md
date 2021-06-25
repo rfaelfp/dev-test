@@ -6,7 +6,7 @@
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
  <a href="#-tecnologias">Tecnologias</a> •
- <a href="#-instalacao">Instalação</a> •
+ <a href="#-instalação">Instalação</a> •
  <a href="#-layout">Layout</a> •  
  <a href="#-como-contribuir-para-o-projeto">Contribuir</a> •
  <a href="#-licença">Licença</a> •    
@@ -20,7 +20,7 @@ A escolha de linguagem, framework, dependências e conceitos gerais de engenhari
 Projeto desenvolvido durante a execução da unidade currícular de Gestão e Qualidade de Software oferecida pela faculdade [UNA](https://www.una.br/).<br>
 Os requisitos completos do desafio pode ser verificado [aqui](https://github.com/dhiegobastos/dev-test).
 
-### 🛠 Tecnologias
+## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
