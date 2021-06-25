@@ -1,22 +1,3 @@
 {
-  "tasks": [
-    {
-      "name": "Minicurso de extensão – Soluções de API’",
-      "finished": true,
-      "checked": true,
-      "id": 2
-    },
-    {
-      "name": "Architecting with Google Compute Engine em Português",
-      "finished": true,
-      "checked": true,
-      "id": 3
-    },
-    {
-      "name": "Java 2021 COMPLETO: Do Zero ao Profissional + Projetos",
-      "finished": true,
-      "checked": true,
-      "id": 4
-    }
-  ]
+  "tasks": []
 }
