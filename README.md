@@ -6,6 +6,7 @@
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
  <a href="#-tecnologias">Tecnologias</a> •
+ <a href="#-instalacao">Instalação</a> •
  <a href="#-layout">Layout</a> •  
  <a href="#-como-contribuir-para-o-projeto">Contribuir</a> •
  <a href="#-licença">Licença</a> •    
@@ -14,8 +15,8 @@
 
 ## 💻 Sobre o projeto
 O presente projeto é uma proposta oferecida pela [CI&T](https://ciandt.com/br/pt-br/home) afim de desafiar os alunos da UNA em uma situação real de desenvolvimento front-end e back-end.<br>
-O desafio consiste no desenvolvimento aplicação de lista de tarefas (todo list) aplicando conceitos REST e utilizando o formato JSON.
-A escolha de linguagem, framework, dependencias e conceitos gerais do desenvolvimento da aplicação foi de livre escolha.<br>
+O desafio consiste no desenvolvimento aplicação de lista de tarefas (todo list) aplicando conceitos REST e utilizando o formato JSON além de aplicar as funcionalidades solicitaidas.
+A escolha de linguagem, framework, dependências e conceitos gerais de engenharia de software foi de livre escolha.<br>
 Projeto desenvolvido durante a execução da unidade currícular de Gestão e Qualidade de Software oferecida pela faculdade [UNA](https://www.una.br/).<br>
 Os requisitos completos do desafio pode ser verificado [aqui](https://github.com/dhiegobastos/dev-test).
 
@@ -58,16 +59,12 @@ docker-compose up
 
 ## 🎨 Layout
 
-### Login/Credenciamento
-
-
-### Trilhas
+### Visão Geral
 <p align="center">
-  <img alt="mentoria" title="#Layout" src="./projeto_estimulo/assets/images/mentoria.png" width="250px" >
+  <img alt="front" title="#Layout" src="images/todolist_front.png"  ><br>
 &nbsp;&nbsp;
-  <img alt="capacitacao" title="#Layout" src="./projeto_estimulo/assets/images/capacitacao.png" width="250px" >
+  <img alt="finish" title="#Layout" src="images/todolist_finish_button_click.png">
 &nbsp;&nbsp;
-  <img alt="acompanhamento" title="#Layout" src="./projeto_estimulo/assets/images/acompanhamento.png" width="250px">
 </p>
 
 ## 💪 Como contribuir para o projeto
