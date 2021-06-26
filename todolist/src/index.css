@@ -11,6 +11,13 @@
   width: 75%;
 }
 
+@media (max-width: 768px) {
+  #root {
+    width: 100%;
+  }
+  
+}
+
 body {
   display: flex;
   height: 100vh;

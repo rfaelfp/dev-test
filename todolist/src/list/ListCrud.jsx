@@ -11,7 +11,7 @@ const initialState = {
 }
 
 export default class ListCrud extends Component {
-    
+
     state = { ...initialState }
 
     componentWillMount() {
@@ -19,25 +19,34 @@ export default class ListCrud extends Component {
             this.setState({ list: resp.data })
         })
     }
-    
-    
+
+
     save() {
         const task = this.state.task
-        const method = task.id ? 'put' : 'post'
-        const url = task.id ? `${baseUrl}/${task.id}` : baseUrl
-        axios[method](url, task)
-        .then(resp => {
-            const list = this.getUpdatedList(resp.data)
-            this.setState({ task: initialState.task, list })
-        })
+        if (task.name == "") {
+            alert("Necessário preencher atividade.")
+        } else {
+            const method = task.id ? 'put' : 'post'
+            const url = task.id ? `${baseUrl}/${task.id}` : baseUrl
+            try {
+                axios[method](url, task)
+                    .then(resp => {
+                        const list = this.getUpdatedList(resp.data)
+                        this.setState({ task: initialState.task, list })
+                    })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
     }
-    
+
     getUpdatedList(task, add = true) {
         const list = this.state.list.filter(u => u.id !== task.id)
         if (add) list.unshift(task)
         list.sort(function compare(a, b) {
             if (a.id < b.id) return 1;
-            if (a.id > b.id) return -1;            
+            if (a.id > b.id) return -1;
         })
         return list
     }
@@ -62,16 +71,16 @@ export default class ListCrud extends Component {
     }
 
     markAllCheckBox() {
-        this.state.list.map(list => {           
+        this.state.list.map(list => {
             const data = { name: list.name, finished: list.finished, checked: true }
-            if (!list.checked) {         
+            if (!list.checked) {
                 axios.put(`${baseUrl}/${list.id}`, data).then(resp => {
                     const list = this.getUpdatedList(resp.data)
                     this.setState({ list })
                 })
             }
         })
-        }
+    }
 
     finishSelected() {
         this.state.list.map(list => {
@@ -79,7 +88,7 @@ export default class ListCrud extends Component {
         })
     }
 
-    
+
 
     updateField(event) {
         const task = { ...this.state.task }
@@ -91,10 +100,10 @@ export default class ListCrud extends Component {
         const data = { name: task.name, finished: task.finished, checked: !task.checked }
         axios.put(`${baseUrl}/${task.id}`, data).then(resp => {
             const list = this.getUpdatedList(resp.data)
-            this.setState({ task: initialState.task, list })       
-        }) 
+            this.setState({ task: initialState.task, list })
+        })
     }
-    
+
 
 
     renderInput() {
@@ -105,12 +114,12 @@ export default class ListCrud extends Component {
                         <div className="form-group">
                             <label>Descrição</label>
                             <input type="text" className="form-control" name="name" value={this.state.task.name}
-                                onChange={e => this.updateField(e)} />
+                                onChange={e => this.updateField(e)} required="required" />
                         </div>
                     </div>
                     <div className="col-md-2 d-flex align-items-center justify-content-left pt-4">
                         <div className="form-group">
-                            <button className="btn btn-outline-dark btn-lg mr-2" onClick={e => this.save(e)}>
+                            <button type="submit" className="btn btn-outline-dark btn-lg mr-2" onClick={e => this.save(e)}>
                                 <b>Cadastrar</b>
                             </button>
                         </div>
@@ -136,14 +145,14 @@ export default class ListCrud extends Component {
                     </tbody>
                 </table>
             </div>
-           
-        ) 
+        )
     }
 
 
     renderRow() {
         return this.state.list.map(list => {
             return (
+
                 <tr>
                     <td className="col-sm-1">
                         <Checkbox
