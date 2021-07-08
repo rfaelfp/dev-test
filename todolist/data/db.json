@@ -1,10 +1,28 @@
 {
   "tasks": [
     {
-      "name": "a",
-      "finished": false,
+      "name": "Tarefa 1",
+      "finished": true,
       "checked": false,
       "id": 1
+    },
+    {
+      "name": "Tarefa 2",
+      "finished": true,
+      "checked": false,
+      "id": 2
+    },
+    {
+      "name": "Tarefa 3",
+      "finished": true,
+      "checked": false,
+      "id": 3
+    },
+    {
+      "name": "Rafael Ferreira Pedrosa",
+      "finished": false,
+      "checked": false,
+      "id": 4
     }
   ]
 }
