@@ -56,6 +56,10 @@ npm i
 ~~~
 docker-compose up
 ~~~
+5. Acessar url abaixo no browser
+~~~
+http://localhost:3000/
+~~~
 
 ## 🎨 Layout
 
